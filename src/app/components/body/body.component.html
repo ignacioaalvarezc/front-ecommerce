@@ -1,0 +1,88 @@
+<app-header></app-header>
+
+<form [formGroup]="formProduct" action="" class="form">
+    <div class="p-inputgroup p-m-4">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input type="text" pInputText placeholder="Nombre" formControlName="name">
+    </div>
+
+    <div class="p-inputgroup p-m-4">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input type="text" pInputText placeholder="Descripcion" formControlName="description">
+    </div>
+
+    <div class="p-inputgroup p-m-4">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input type="text" pInputText placeholder="Cantidad" formControlName="amount">
+    </div>
+
+    <div class="p-inputgroup p-m-4">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input type="text" pInputText placeholder="Precio" formControlName="price">
+    </div>
+
+    <div class="p-inputgroup p-m-4">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input type="text" pInputText placeholder="Imagen" formControlName="image">
+    </div>
+
+    <div>
+        <button pButton trype="button" class="p-button-raised" label="Registrar" (click)="saveProduct"></button>
+    </div>
+</form>
+
+    <p-table [value]="products" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.amount }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.image }}</td>
+                <td><button pButton type="button" icon="pi pi-pencil" class="p-button-rounded" (click)="activator(product)"></button></td>
+                <td><button pButton type="button" icon="pi pi-times" class="p-button-rounded" (click)="deleteProduct(product.name)"></button></td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog header="Title" [(visible)]="display">
+        <form [formGroup]="formProduct" action="" class="form">
+            <div class="p-inputgroup p-m-4">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text" pInputText placeholder="Descripcion" formControlName="description">
+            </div>
+        
+            <div class="p-inputgroup p-m-4">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text" pInputText placeholder="Cantidad" formControlName="amount">
+            </div>
+        
+            <div class="p-inputgroup p-m-4">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text" pInputText placeholder="Precio" formControlName="price">
+            </div>
+        
+            <div class="p-inputgroup p-m-4">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text" pInputText placeholder="Imagen" formControlName="image">
+            </div>
+        
+            <div>
+                <button pButton trype="button" class="p-button-raised" label="Actualizar" (click)="updateProduct"></button>
+            </div>
+        </form>
+    </p-dialog>
+
+
+
